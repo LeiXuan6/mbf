@@ -1,0 +1,5 @@
+version: 1
+display_name: ABSD Refactor Copilot
+short_description: Plan and implement phased ABSD refactors for this Unity repo.
+default_prompt: Refactor this project with ABSD, using explicit architecture drivers, bounded migration slices, and behavior-preserving changes.
+
