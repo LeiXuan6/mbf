@@ -15,7 +15,8 @@ namespace DesignerScripts
         public static Dictionary<string, BulletOnHit> onHitFunc = new Dictionary<string, BulletOnHit>(){
             {"CommonBulletHit", CommonBulletHit},
             {"CreateAoEOnHit", CreateAoEOnHit},
-            {"CloakBoomerangHit", CloakBoomerangHit}
+            {"CloakBoomerangHit", CloakBoomerangHit},
+            {"FixedDamageHit", FixedDamageHit}
         };
         public static Dictionary<string, BulletOnRemoved> onRemovedFunc = new Dictionary<string, BulletOnRemoved>(){
             {"CommonBulletRemoved", CommonBulletRemoved},
@@ -61,6 +62,31 @@ namespace DesignerScripts
                 bullet.transform.eulerAngles.y,
                 critRate,
                 new DamageInfoTag[]{DamageInfoTag.directDamage, }
+            );
+        }
+
+        private static void FixedDamageHit(GameObject bullet, GameObject target){
+            BulletState bulletState = bullet.GetComponent<BulletState>();
+            if (!bulletState) return;
+            object[] p = bulletState.model.onHitParams;
+            int damage = p.Length > 0 ? (int)p[0] : 5;
+            string sightEffect = p.Length > 1 ? (string)p[1] : "";
+            string bpName = p.Length > 2 ? (string)p[2] : "Body";
+
+            if (sightEffect != ""){
+                UnitBindManager ubm = target.GetComponent<UnitBindManager>();
+                if (ubm){
+                    ubm.AddBindGameObject(bpName, "Prefabs/" + sightEffect, "", false);
+                }
+            }
+
+            SceneVariants.CreateDamage(
+                bulletState.caster,
+                target,
+                new Damage(damage),
+                bullet.transform.eulerAngles.y,
+                0.0f,
+                new DamageInfoTag[]{DamageInfoTag.directDamage}
             );
         }
 

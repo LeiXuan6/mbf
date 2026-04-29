@@ -23,5 +23,10 @@ namespace DesingerTables
             })},
             {"roll", new SkillModel("roll", ChaResource.Null, ChaResource.Null, "skill_roll", null)}
         };
+
+        public static void RegisterOrReplace(SkillModel skillModel){
+            if (skillModel.id == null || skillModel.id == "") return;
+            data[skillModel.id] = skillModel;
+        }
     }
 }

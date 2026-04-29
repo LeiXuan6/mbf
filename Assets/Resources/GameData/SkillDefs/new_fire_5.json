@@ -1,0 +1,15 @@
+{
+  "id": "new_fire_5",
+  "timelineId": "skill_new_fire_5",
+  "autoLearn": true,
+  "cost": {
+    "hp": 0,
+    "ammo": 0,
+    "stamina": 0
+  },
+  "condition": {
+    "hp": 0,
+    "ammo": 0,
+    "stamina": 0
+  }
+}

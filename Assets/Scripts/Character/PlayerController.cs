@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         }
 
         string[] skillId = new string[]{
-             "explosiveBarrel", "teleportBullet","grenade","cloakBoomerang","fire","roll"
+             "new_fire_5", "teleportBullet","grenade","cloakBoomerang","fire","roll"
         };
 
         bool btnHolding = false;

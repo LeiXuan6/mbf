@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
         mcs.LearnSkill(DesingerTables.Skill.data["teleportBullet"]);
         mcs.LearnSkill(DesingerTables.Skill.data["grenade"]);
         mcs.LearnSkill(DesingerTables.Skill.data["explosiveBarrel"]);
+        RegisterAndLearnSkillDefs(mcs);
 
         //【test】给主角添加火焰护盾的aoe
         // this.CreateAoE(new AoeLauncher(
@@ -59,6 +60,32 @@ public class GameManager : MonoBehaviour
         //     new object[]{1.2f, 360.0f}
         // ));
         
+    }
+
+    private void RegisterAndLearnSkillDefs(ChaState mcs){
+        List<SkillDefLoader.SkillDefResource> defs = SkillDefLoader.LoadAllDefsFromFolder("GameData/SkillDefs");
+        int loaded = 0;
+        int failed = 0;
+        HashSet<string> seenIds = new HashSet<string>();
+        for (int i = 0; i < defs.Count; i++){
+            if (seenIds.Contains(defs[i].id)){
+                Debug.LogWarning("SkillDef duplicate id ignored: " + defs[i].id);
+                failed++;
+                continue;
+            }
+            seenIds.Add(defs[i].id);
+            SkillModel skillModel = SkillDefLoader.ToSkillModel(defs[i]);
+            if (skillModel.id == null || skillModel.id == ""){
+                failed++;
+                continue;
+            }
+            DesingerTables.Skill.RegisterOrReplace(skillModel);
+            loaded++;
+            if (defs[i].autoLearn == true){
+                mcs.LearnSkill(DesingerTables.Skill.data[skillModel.id]);
+            }
+        }
+        Debug.Log("SkillDef loaded=" + loaded + " failed=" + failed);
     }
 
     void Update()

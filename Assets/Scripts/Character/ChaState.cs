@@ -498,6 +498,7 @@ public class ChaState:MonoBehaviour{
     ///<return>是否释放成功</return>
     ///</summary>
     public bool CastSkill(string id){
+        Debug.Log($"cast skill: {id}");
         if (this.controlState.canUseSkill == false) return false; //不能用技能就不放了
         SkillObj skillObj = GetSkillById(id);
         if (skillObj == null || skillObj.cooldown > 0) return false;

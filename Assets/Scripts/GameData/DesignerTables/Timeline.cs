@@ -19,6 +19,18 @@ namespace DesingerTables
                 new TimelineNode(0.50f, "SetCasterControlState", new object[]{true, true, true})
             }, 0.50f, TimelineGoTo.Null)},
 
+            { "skill_new_fire_5", new TimelineModel("skill_new_fire_5", new TimelineNode[]{
+                new TimelineNode(0.00f, "SetCasterControlState", new object[]{true, true, false}),
+                new TimelineNode(0.00f, "CasterPlayAnim", new object[]{"Fire", false}),
+                new TimelineNode(0.10f, "PlaySightEffectOnCaster", new object[]{"Muzzle","Effect/MuzzleFlash","",false}),
+                new TimelineNode(0.10f, "FireBullet", new object[]{
+                    new BulletLauncher(
+                        Bullet.data["fixed5"], null, Vector3.zero, 0, 6.0f, 10.0f
+                    ), "Muzzle"
+                }),
+                new TimelineNode(0.50f, "SetCasterControlState", new object[]{true, true, true})
+            }, 0.50f, TimelineGoTo.Null)},
+
             //填装子弹
             { "skill_reload", new TimelineModel("skill_reload", new TimelineNode[]{
                 new TimelineNode(0.00f, "SetCasterControlState", new object[]{true, true, false}),

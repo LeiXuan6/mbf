@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -41,9 +41,15 @@ namespace DesingerTables
                 "SetBombBouncing", new object[0],
                 "CreateAoEOnHit", new object[]{new AoeLauncher(DesingerTables.AoE.data["BoomExplosive"], null, Vector3.zero, 1.5f, 0, 0)},
                 "CreateAoEOnRemoved", new object[]{
-                    new AoeLauncher(DesingerTables.AoE.data["StayingBoom"], null, Vector3.zero, 0.1f, 3.0f, 0),  //反正碰撞也没用，不如就直接…………
-                    new AoeLauncher(DesingerTables.AoE.data["BoomExplosive"], null, Vector3.zero, 1.5f, 0, 0)                    
+                    new AoeLauncher(DesingerTables.AoE.data["StayingBoom"], null, Vector3.zero, 0.1f, 3.0f, 0),
+                    new AoeLauncher(DesingerTables.AoE.data["BoomExplosive"], null, Vector3.zero, 1.5f, 0, 0)
                 }
+            )},
+            {"fixed5", new BulletModel(
+                "fixed5", "BulletNormal0",
+                "", new object[0],
+                "FixedDamageHit", new object[]{5, "Effect/HitEffect_A", "Body"},
+                "CommonBulletRemoved", new object[]{"Effect/HitEffect_A"}
             )}
         };
     }
