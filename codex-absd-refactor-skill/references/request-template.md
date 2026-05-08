@@ -6,6 +6,12 @@ Use this template when asking Codex to execute with this skill.
 
 Describe the concrete change you want.
 
+## OpenSpec
+
+- Existing change id:
+- Create new change? yes/no:
+- Affected specs:
+
 ## Scope
 
 - Include paths:

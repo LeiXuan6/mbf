@@ -1,5 +1,5 @@
 version: 1
-display_name: ABSD Refactor Copilot
-short_description: Plan and implement phased ABSD refactors for this Unity repo.
-default_prompt: Refactor this project with ABSD, using explicit architecture drivers, bounded migration slices, and behavior-preserving changes.
+display_name: OpenSpec ABSD Copilot
+short_description: Plan and implement OpenSpec-backed ABSD slices for the Unity top-down shooting game framework migration.
+default_prompt: Read AGENTS.md and OpenSpec first. Reverse-analyze current Unity prototype behavior as a top-down shooting game framework, create or update OpenSpec changes for substantial work, then implement bounded ABSD migration slices while preserving prototype behavior.
 

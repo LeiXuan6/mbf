@@ -5,6 +5,13 @@
 - Quality attributes:
 - Priority scenarios:
 
+## OpenSpec
+
+- Current specs read:
+- Change id:
+- Deltas created/updated:
+- Open questions:
+
 ## Current vs Target
 
 - Current structure:
